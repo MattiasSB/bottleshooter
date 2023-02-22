@@ -1,0 +1,556 @@
+
+/*---------------------------------------------------------------
+Global
+---------------------------------------------------------------*/
+body {
+    background: rgb(32, 32, 32);
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    height: 100vh;
+    width: 100vw;
+}
+
+.unica-One{
+    font-family: 'Unica One', cursive;
+    font-size: 2em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5rem;
+
+}
+
+/*---------------------------------------------------------------
+Helper class
+---------------------------------------------------------------*/
+.is-flex {
+    display: flex;
+}
+.wh-100 {
+    width: 100%;
+    height: 100%;
+}
+.justify-center{
+    justify-content: center;
+}
+.position-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.columns {
+    flex-direction: column;
+}
+
+.pad-2 {
+    padding: 0 1em;
+}
+.vis-hidden {
+    visibility: hidden;
+}
+
+
+
+/*---------------------------------------------------------------
+Background/setting styles
+---------------------------------------------------------------*/
+
+.background {
+    width: 1200px;
+    height: 700px;
+    background: url(../img/background.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border: 1em solid rgba(255, 0, 0, 0.771);
+}
+
+
+.clouds {
+    background: url("../img/clouds.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    animation: bg-move 230s infinite linear;
+    pointer-events: none;
+    opacity: 80%;
+}
+
+@keyframes bg-move {
+    0%{
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+
+/*---------------------------------------------------------------
+Scope
+---------------------------------------------------------------*/
+
+.scope {
+    background: url(../img/scope.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    height: 60vh;
+    width: 60vw;
+    pointer-events: none;
+}
+
+/*---------------------------------------------------------------
+Container
+---------------------------------------------------------------*/
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+/*---------------------------------------------------------------
+Bottle/Bucket Styling (Sets positioning of bucket/ bottle within position)
+---------------------------------------------------------------*/
+
+.bucketStyles{
+    background: url(../img/bucket.png);
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90px;
+    width: 100px;
+    z-index: 0;
+}
+
+.bottleStyles{
+    background: url(../img/bottle.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 140px;
+    width: 90px;
+    top: -110px;
+    left: 3px;
+    position: absolute;
+    z-index: 2;
+    scale: 1.4;
+}
+
+.bottleClicked{
+    background: url(../img/broken-bcit-bottle.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 130px;
+    width: 90px;
+    top: -75px;
+    left: 3px;
+    position: absolute;
+    z-index: 2;
+    scale: 1.4;
+}
+
+/*---------------------------------------------------------------
+Position Styling (Sets position of the buckets and bottles)
+---------------------------------------------------------------*/
+
+/*Position 1*/
+
+.position1 {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    scale: 1.3;
+}
+
+/*Position 2*/
+
+.position2 {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    scale: 0.2;
+}
+
+/*Position 3*/
+
+.position3 {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    scale: 0.6;
+}
+
+/*Position 4*/
+
+
+.position4 {
+    position: absolute;
+    top: 38%;
+    left: 60%;
+    scale: 0.3;
+}
+
+/*Position 5*/
+
+.position5 {
+    position: absolute;
+    top: 44%;
+    left: 27%;
+    scale: 0.4;
+}
+
+/*---------------------------------------------------------------
+Bottle Visibility setting
+---------------------------------------------------------------*/
+
+/*bottle visibility */
+
+#b1 {
+    visibility: hidden;
+}
+
+#b2 {
+    visibility: hidden;
+}
+
+#b3 {
+    visibility: hidden;
+}
+
+#b4 {
+    visibility: hidden;
+}
+
+#b5 {
+    visibility: hidden;
+}
+
+/*---------------------------------------------------------------
+Initial Menu
+---------------------------------------------------------------*/
+
+.menu {
+    position: absolute;
+    z-index: 20;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    text-align: center;
+    background: rgba(9, 9, 9, 0.916);
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.title {
+    font-family: 'Rubik Mono One', sans-serif;
+    color: rgba(255, 0, 0, 0.771);
+    text-shadow: 3px 3px rgb(192, 192, 9);
+    font-size: 3em;
+}
+
+.menuOption {
+    font-family: 'Unica One', cursive;
+    margin: 50px 0;
+    font-size: 3em;
+    cursor: pointer;
+    color: white;
+}
+
+/*---------------------------------------------------------------
+Button
+---------------------------------------------------------------*/
+
+.submenu {
+    visibility: hidden;
+    height: 0;
+}
+
+/* Buttons */
+
+.exitButton {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+.backArrow {
+    position: absolute;
+    top: 1em;
+    left: 4em;
+}
+
+/* Button Hover */
+
+.exitButton:hover {
+    left: 1.06em;
+}
+
+.backArrow:hover {
+    left: 4.06em;
+}
+
+/* Button Helper Class */
+
+.buttonStyle {
+    height: 2em;
+    width: 2em;
+    background: red;
+    padding: 1em;
+    border-radius: 50%;  
+    box-shadow: 3px 3px 0 0 rgb(192, 192, 9);
+    cursor: pointer;
+    scale: 0.5;
+}
+
+.buttonStyle:hover {
+    box-shadow: none;
+    top: 1.06em;
+}
+
+/*---------------------------------------------------------------
+Effects for Menu
+---------------------------------------------------------------*/
+
+.menuOption:hover {
+    animation: glow infinite 0.5s ease alternate;
+}
+
+.controlSelected {
+    animation: glow infinite 0.5s ease alternate;
+}
+
+.selected {
+    animation: glowSelected infinite 0.5s ease alternate;
+}
+
+@keyframes glowSelected {
+    0%{
+        color: rgb(192, 192, 9);
+        font-size: 0.9em;
+    }
+    100%{
+        color: rgba(255, 0, 0, 0.771);
+        font-size: 1em;
+    }
+    
+}
+
+@keyframes glow {
+    0%{
+        color: rgb(192, 192, 9);
+        font-size: 2.8em;
+    }
+    100%{
+        color: rgba(255, 0, 0, 0.771);
+        font-size: 3em;
+    }
+    
+}
+
+/*---------------------------------------------------------------
+Submenu
+---------------------------------------------------------------*/
+
+.submenu {
+    visibility: hidden;
+    height: 0;
+}
+
+/* Buttons */
+
+.exitButton {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+.backArrow {
+    position: absolute;
+    top: 1em;
+    left: 4em;
+}
+
+/*---------------------------------------------------------------
+Game Over Menu
+---------------------------------------------------------------*/
+
+.menuGameOver {
+    position: absolute;
+    z-index: 21;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    background: rgba(9, 9, 9, 0.916);
+}
+
+.menuGameOver p {
+    color: white;
+    font-size: 2em;
+    margin: 0.5em 0em;
+}
+
+/*---------------------------------------------------------------
+Score Related
+---------------------------------------------------------------*/
+
+.gameScore {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: 5%;
+    text-align: center;
+}
+
+.gameScore__title {
+    font-size: 2em;
+}
+
+.timer {
+    font-size: 2em;
+}
+
+.sHeight {
+    font-size: 1.5em;
+}
+
+/*---------------------------------------------------------------
+Indicators
+---------------------------------------------------------------*/
+
+.indicators-list{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    opacity: 50%;
+    scale: 0.8;
+}
+
+.indicator {
+    margin: 1rem;
+}
+.indicator-Esc{
+    padding: 0.8em 2em 0.8em 1em;
+}
+
+.indicator-Shift{
+    padding: 0.8em 2em 0.8em 1em;
+}
+
+.indicator-Style {
+    background: rgb(229, 229, 229);
+    color: rgb(64, 64, 64);
+    font-family: 'Rubik Mono One', sans-serif;
+    margin: 1rem 0;
+    box-shadow: 0.13em 0.3em black;
+    border-radius: 0.6em;
+}
+
+.indicatorText {
+    font-family: 'Unica One', cursive;
+}
+
+.indicator-click {
+    padding: 0.5em;
+    height: 32px;
+    width: 32px;
+}
+
+/*---------------------------------------------------------------
+Bird
+---------------------------------------------------------------*/
+
+#birdContainer {
+    z-index: 1;
+    height: 200px;
+    scale: 0.2;
+    position: absolute;
+    top: 14.5%;
+    animation: moveLeft 17s linear alternate infinite;
+}
+
+@keyframes moveLeft {
+    0% {
+        left: 93%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+
+
+#Left-Wing {
+animation: flap infinite 0.3s alternate cubic-bezier(.72,.66,.62,1.07);
+transform-origin: center;
+}
+
+#Right-Wing {
+animation: flap-right infinite 0.3s alternate cubic-bezier(.72,.66,.62,1.07);
+transform-origin: center;
+position: absolute;
+z-index: 3;
+}
+
+#Body{
+animation: flap-body infinite 0.3s alternate cubic-bezier(.72,.66,.62,1.07);
+}
+
+#Head {
+animation: flap-body infinite 0.3s alternate cubic-bezier(.72,.66,.62,1.07);
+
+}
+
+@keyframes flap-body {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-15deg) translateY(40px);
+    }
+}
+
+@keyframes flap {
+    0%{
+        transform: rotate(45deg)  translateY(10px);
+    }
+    100%{
+        transform: rotate(-45deg) translateX(20px) translateY(30px);
+        filter: brightness(0.2);
+    }
+}
+
+@keyframes flap-right {
+    0%{
+        transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(45deg) translateX(10px) translateY(30px);
+    }
+}
+
+.cls-1{fill:#f0512c;}
+.cls-2{fill:#fff}
+.cls-4{fill:#231f20}
+.cls-8{fill:#4453a4}
+.cls-4{opacity:.2};
+.cls-10{fill:none;stroke:#4454a5;stroke-linecap:round;stroke-miterlimit:10;stroke-width:4px};
+
+
+/*---------------------------------------------------------------
+Indicators
+---------------------------------------------------------------*/
+
+

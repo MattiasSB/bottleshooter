@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/bottle.png">
+    <title>Bottle Shooter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Unica+One&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="position-flex">
+    <div class="scope"></div>
+    <div class="menu position-flex">
+        <svg class="backArrow buttonStyle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg class="exitButton buttonStyle" id="menuExitButton" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+        <h2 class="title">Welcome To Bottle Shooter</h2>
+        <div>
+            <ul>
+                <li class="menuOption hoverEffect"><h3 id="start">Play Game</h3></li>
+                <li class="menuOption hoverEffect startOver"><h3>Restart</h3></li>
+                <li>
+                    <h3 id="controls" class="menuOption hoverEffect">Controls</h3>
+                    <ul class="submenu">
+                        <li class="menuOption">Esc = Open Menu</li>
+                        <li class="menuOption">Click = Shoot</li>
+                        <li class="menuOption">Shift = Aim</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuGameOver position-flex vis-hidden">
+        <h3 class="title">Game Over</h3>
+        <p>Your Score Was:</p>
+        <p id="endScreenScore" class="score">0</p>
+        <ul>
+            <li class="menuOption gameOverRestart">Restart</li>
+        </ul>
+    </div>
+    <div class="container justify-center">
+        <div class="background">
+            <svg width="10%" xmlns="http://www.w3.org/2000/svg" id="birdContainer" data-name="Bird" viewBox="0 0 215.44 216.04">
+                <g id="Icon_Logo_s" data-name="Icon Logo&amp;apos;s">
+                    <g id="Bird">
+                    <g id="Left-Wing">
+                        <ellipse id="Back_Wing" cx="64.49" cy="95.25" class="cls-8" data-name="Back Wing" rx="64.45" ry="24.62" transform="rotate(-53.42 64.497 95.253)"/>
+                        <path d="M45.19 80.75c-4.96 31.15 16.3 54.16 16.3 54.16s-2.56 2.06-6.2 4.76c-19.1 6.81-12.06-56.17-12.06-56.17l1.97-2.75Z" class="cls-4"/>
+                    </g>
+                    <g id="Body">
+                        <path id="Body-base" d="M135.82 76.77c11.97 23.67 18.7 84.66-4.98 96.62-1.87.94-5.35 3.9-5.98 1.87-4.41-14.39-7.09.23-10.94-.67-23.97-5.63-54.34-35.7-63.84-54.49-11.97-23.67-7.81-63.12 15.86-75.09 23.67-11.97 57.9 8.09 69.87 31.76Z" class="cls-1"/>
+                    </g>
+                    <g id="Right-Wing">
+                        <ellipse id="WIng" cx="141.63" cy="88.08" class="cls-8" rx="24.62" ry="64.45" transform="rotate(-53.42 141.64 88.08)"/>
+                        <path d="M82.62 69.98s3.53-.61 7.43-4.21c2.87 8.75 12.5 27.51 56.24 54.44 0 7.38.41 17.77.41 17.77s-25.55-4.52-64.08-68Z" class="cls-4"/>
+                    </g>
+                    <g id="Head">
+                        <path id="Head-2" d="M102.55 38.07C102.55 17.04 74.64 0 64.49 0 43.46 0 30.68 20.55 26.42 38.07c0 21.02 17.04 38.07 38.07 38.07s38.07-17.04 38.07-38.07Z" class="cls-1" data-name="Head"/>
+                        <path id="Beak" d="M52.58 51.23c-1.51-4.49-9.26-.52-13.75.99s-20.25-.18-18.73 4.31c1.51 4.49 19.45 8.15 23.93 6.63 4.49-1.51 10.06-7.44 8.55-11.93Z" style="fill:#211e1e"/>
+                        <path d="M64.49 30.82s-.03 8.58-6.6 8.39c-6.57-.19-7.26-7-7.14-8.39s13.74 0 13.74 0Z" class="cls-4"/>
+                        <path d="M20.68 57.59h11.06s20.9 1.79 21.09-5.6c-2.99 3.82-5.24 3.26-10.7 3.79-15.4-1.34-21.46 1.82-21.46 1.82Z" style="opacity:.52;fill:#231f20"/>
+                        <path id="Beak-2" d="M52.84 50.5c0 6.87-14.01 5.01-21.71 5.01S0 65.14 0 58.27s25.75-20.2 33.45-20.2 19.38 5.57 19.38 12.44Z" data-name="Beak" style="fill:#353030"/>
+                        <circle cx="57.62" cy="31.2" r="6.87" style="fill:#231f20"/>
+                        <path d="M57.62 29.36s-5.04-.7-2.74-2.3 7.12-.69 6.65 2.3c-2.29-1.54-3.91 0-3.91 0ZM1.22 56.33c18.33-18.26 37.53-18.84 37.07-15.85C17.48 39.12-.77 58.31 1.22 56.33Z" class="cls-2"/>
+                        <path d="M46.2 71.46s12.48 5.68 20.87 0c-7.75 10.1-22.02 4.67-22.02 4.67l1.15-4.67Z" style="opacity:.18;fill:#231f20"/>
+                    </g>
+                    </g>
+                </g>
+                </svg>
+            <div class="clouds wh-100">
+            </div>
+            <div class="gameScore">
+                <div>
+                    <h3 class="gameScore__title pad-2 unica-One">Score</h3> 
+                    <h3 id="screenScore" class="title score pad-2">0</h3>
+                </div>
+                <div>
+                    <h3 class="gameScore__title pad-2 unica-One">Time Left</h3>
+                    <h3 class="title sHeight pad-2"><span class="timer">60</span>s</h3>
+                </div>
+            </div>
+            <div class="indicators-list position-flex">
+                <div class="indicator position-flex columns">
+                    <div class="indicator-Esc indicator-Style">Esc</div>
+                    <p class="indicatorText">Open Menu</p>
+                </div>
+                <div class="indicator position-flex columns">
+                    <div class="indicator-Shift indicator-Style">Shift</div>
+                    <p class="indicatorText">Aim</p>
+                </div>
+                <div class="indicator position-flex columns">
+                    <div class="indicator-click indicator-Style">
+                        <img src="/img/click.png" alt="Clickable Icon" height="32px" width="32px">
+                    </div>
+                    <p class="indicatorText">Click to Shoot</p>
+                </div>
+            </div>
+            <div class="position1 position-flex">
+                <div class="bucketStyles">
+                    <div class="bottleStyles" id="b1"></div>
+                </div>
+            </div>
+            <div class="position2 position-flex">
+                <div class="bucketStyles">
+                    <div class="bottleStyles" id="b2"></div>
+                </div>
+            </div>
+            <div class="position3 position-flex">
+                <div class="bucketStyles">
+                    <div class="bottleStyles" id="b3"></div>
+                </div>
+            </div>
+            <div class="position4 position-flex">
+                <div class="bucketStyles">
+                    <div class="bottleStyles" id="b4"></div>
+                </div>
+            </div>
+            <div class="position5 position-flex">
+                <div class="bucketStyles">
+                    <div class="bottleStyles" id="b5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/menu.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
